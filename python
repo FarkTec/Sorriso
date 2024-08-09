@@ -1,0 +1,17 @@
+# Define as mensagens
+mensagens = {
+    1: "Olá, mundo!",
+    2: "Bem-vindo ao programa!",
+    3: "Escolha uma opção válida!"
+}
+
+# Pergunta ao usuário qual mensagem imprimir
+opcao = int(input("Escolha uma opção (1, 2 ou 3): "))
+
+# Verifica se a opção é válida
+if opcao in mensagens:
+    # Imprime a mensagem escolhida
+    print(mensagens[opcao])
+else:
+    # Imprime uma mensagem de erro
+    print("Opção inválida. Por favor, escolha uma opção válida.")
