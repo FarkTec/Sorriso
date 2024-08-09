@@ -1,0 +1,52 @@
+import random
+import time
+
+# Define os dados disponíveis
+dados = {
+    "d4": 4,
+    "d6": 6,
+    "d8": 8,
+    "d10": 10,
+    "d12": 12
+}
+
+while True:
+    # Pergunta ao usuário qual dado rolar
+    dado_escolhido = input("Escolha um dado (d4, d6, d8, d10 ou d12): ")
+
+    # Verifica se o dado escolhido é válido
+    if dado_escolhido in dados:
+        # Pergunta ao usuário qual o bônus para a rolagem
+        bonus = int(input("Qual o bônus para a rolagem? "))
+
+        # Simula um "pause" para dar a sensação de que o dado está sendo fisicamente rolado
+        print("Rolling...")
+        time.sleep(1)
+
+        # Rola o dado
+        resultado = random.randint(1, dados[dado_escolhido])
+
+        # Aplica o bônus ao resultado
+        resultado_final = resultado + bonus
+
+        # Gera dois valores aleatórios entre 2 e 10
+        valor1 = random.randint(2, 10)
+        valor2 = random.randint(2, 10)
+
+        # Imprime o resultado
+        print(f"Você rolou um {dado_escolhido} e obteve {resultado} + {bonus} = {resultado_final}")
+        print(f"Valor alvo: {min(valor1, valor2)} - {max(valor1, valor2)}")
+
+        # Verifica se o resultado final é menor que o menor valor
+        if resultado_final < min(valor1, valor2):
+            print("Errou!")
+        # Verifica se o resultado final está entre os dois valores
+        elif min(valor1, valor2) <= resultado_final <= max(valor1, valor2):
+            print("Acertou na Armadura!")
+        # Verifica se o resultado final é maior que o maior valor
+        else:
+            print("Acerto em Cheio!")
+
+        print("\n")
+    else:
+        print("Dado inválido. Por favor, escolha um dado válido.")
